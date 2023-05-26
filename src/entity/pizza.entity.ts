@@ -1,17 +1,18 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Topping } from "./topping.entity";
 
 @Entity()
 export class Pizza {
   @PrimaryGeneratedColumn('increment')
   id: number
-  @Column()
+  @Column({default: ''})
   type: string
-  @Column()
+  @Column({default: ''})
   orderDate: string
-  @Column()
+  @Column({default: ''})
   orderTime: string
   @ManyToMany(() => Topping)
+  @JoinTable()
   toppings: Topping[]
 
 }
