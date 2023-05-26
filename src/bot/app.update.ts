@@ -9,7 +9,7 @@ import TelegramBot from "node-telegram-bot-api";
 import { AppService } from "../app.service";
 
 
-@Controller('pizzas')
+@Controller()
 @Update()
 export class AppUpdate {
   webAppUrl: string = 'https://web-tg-app.netlify.app'
@@ -42,8 +42,8 @@ export class AppUpdate {
 
 }
 
-  @Post()
-  async getQueries(@Ctx() ctx: Context,@Req() req: Request, @Res() res: Response) {
+  @Post('/web-data')
+  async getQueries(@Req() req: Request, @Res() res: Response) {
     const {queryId, pizzas = [], totalPrice} = req.body
     console.log(pizzas);
     if (totalPrice > 0) {
@@ -60,7 +60,7 @@ export class AppUpdate {
         }
       })
     }}
-  @Get()
+  @Get('/pizza')
    async  getPizzas() {
     console.log(await this.appService.getAll());
     return  this.appService.getAll()
