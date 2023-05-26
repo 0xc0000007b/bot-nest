@@ -2,7 +2,7 @@ import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ToppingEntity } from "./topping.entity";
 
 @Entity()
-export class PizzaEntity {
+export class Pizza {
   @PrimaryGeneratedColumn('increment')
   id: number
   @Column()

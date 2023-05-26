@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { PizzaEntity } from "./entity/pizza.entity";
-import { ToppingEntity } from "./entity/topping.entity";
+import { Pizza } from "./entity/pizza.entity";
+import { Topping } from "./entity/topping.entity";
 
 import {config} from "dotenv";
 import * as process from "process";
@@ -17,7 +17,7 @@ config()
     TelegrafModule.forRoot({
       token: process.env.TOKEN
     }),
-    TypeOrmModule.forFeature([ToppingEntity, PizzaEntity]),
+    TypeOrmModule.forFeature([Topping, Pizza]),
     TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'sql.freedb.tech',
@@ -26,7 +26,7 @@ config()
     password: 'q456sV$Vs99*paV',
     database: 'freedb_test-bot',
     dropSchema: false,
-    entities: [PizzaEntity, ToppingEntity],
+    entities: [Pizza, Topping],
     synchronize: true,
   })],
   controllers: [AppController, AppUpdate ],
