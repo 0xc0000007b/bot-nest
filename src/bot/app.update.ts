@@ -45,6 +45,7 @@ export class AppUpdate {
   @Post()
   async getQueries(@Ctx() ctx: Context,@Req() req: Request, @Res() res: Response) {
     const {queryId, pizzas = [], totalPrice} = req.body
+    console.log(pizzas);
     if (totalPrice > 0) {
       await this.bot.telegram.answerWebAppQuery(queryId, {
         type: 'article',
