@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { PizzaEntity } from "./entity/pizza.entity";
+import { Pizza } from "./entity/pizza.entity";
 
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(PizzaEntity) readonly  pizzaRepo: Repository<PizzaEntity> ) {}
-  async writePizzaToDb(item: PizzaEntity) {
-    const pizza = new PizzaEntity()
+  constructor(@InjectRepository(Pizza) readonly  pizzaRepo: Repository<Pizza> ) {}
+  async writePizzaToDb(item: Pizza) {
+    const pizza = new Pizza()
     pizza.type = item.type
     pizza.orderDate = item.orderDate
     pizza.orderTime = item.orderTime

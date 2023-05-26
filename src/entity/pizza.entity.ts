@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ToppingEntity } from "./topping.entity";
+import { Topping } from "./topping.entity";
 
 @Entity()
 export class Pizza {
@@ -11,7 +11,7 @@ export class Pizza {
   orderDate: string
   @Column()
   orderTime: string
-  @ManyToMany(() => ToppingEntity)
-  toppings: ToppingEntity[]
+  @ManyToMany(() => Topping)
+  toppings: Topping[]
 
 }
