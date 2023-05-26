@@ -42,7 +42,7 @@ export class AppUpdate {
 
 }
 
-  @Post('web-data')
+  @Post('/web-data')
   async getQueries(@Req() req: Request, @Res() res: Response) {
     const {queryId, pizzas = [], totalPrice} = req.body
     console.log(pizzas);
@@ -60,7 +60,7 @@ export class AppUpdate {
         }
       })
     }}
-  @Get('pizza')
+  @Get('/pizza')
    async  getPizzas() {
     console.log(await this.appService.getAll());
     return  this.appService.getAll()
